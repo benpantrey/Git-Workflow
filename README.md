@@ -40,3 +40,27 @@ git commit -s -m "DOC-3000- Made Changes to X"
 This stages and commits your change. The -s tag signs off on the commit, and the -m tag leaves a message. Commits must have a message; try to make it clear so your change can be easily identified later.
 
 To push the branch and create a **pull request**, type `git push`. You will receive an error message that provides you with the correct command. Copy, paste, and click enter. Then, go to github.com and navigate to the repository you sent a pull request to. Your new pull request will appear at the top of the page in a green box. Click into it, write a more detailed description if necessary, and submit it. Your colleagues will review the pull request, and may request changes. Also, the pull request may need to be updated if it is out of sync with the main branch. Once these changes are made, and the pull request is approved, it can be **squashed and merged**.
+
+## Hugo
+
+When you edit or move a page, you may wish to see what the changes look like before you create a PR. This is where hugo comes in.
+
+Open a new tab in Terminal, and use:
+
+`hugo serve`
+
+This will spin up a locally hosted version of the web-page. Navigate to the page you are editing to see your changes. Continue writing and save the file to see the page reload with your changes.
+
+### Broken Links
+
+Sometimes, moving a page will result in broken links. To resolve this before you create PR:
+
+1. Start the `hugo` server
+
+`npm run serve-for-checker &`
+
+2. Run `muffet` to look for broken links:
+
+`muffet http://localhost:1313/en -e ".*.js.*" -e ".*.gif.*" -e ".*png.*" -e ".*.css.*" -e ".*.icon.*" -e ".*.jpg.*" -e ".*/_print/.*" --ignore-fragments -i ".*localhost.*" --skip-tls-verification -c 10`
+
+Any broken links will show up as a 404. Use VSCode's search to find and replace them with the new path.
