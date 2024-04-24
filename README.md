@@ -1,4 +1,4 @@
-# Introductionn
+# Introduction
 
 Git is a useful platform for managing multiple versions of a file. Writers can work on a project independently, and contribute their work once it's ready to be shared. This page describes my workflow for writing documentation with Git and Github.
 
